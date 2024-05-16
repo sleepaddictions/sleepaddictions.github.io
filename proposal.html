@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Alia<3</title>
+    <style>
+        body {
+            background-color: #FFC0CB; /* Cotton candy pink */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .question {
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            transition: box-shadow 0.5s;
+            display: inline-block;
+        }
+        .button:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Rainbow shadow effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">Do you love me?</div>
+        <div class="button-container">
+            <button id="yes-button" class="button" onclick="yesAction()">Yes!</button>
+            <button id="no-button" class="button" onclick="noAction()">No.</button>
+        </div>
+    </div>
+
+    <script>
+        let noButtonClicks = 0;
+
+        function yesAction() {
+            document.body.style.backgroundColor = 'black';
+            document.querySelector('.container').style.display = 'none';
+            const loveMessage = document.createElement('div');
+            loveMessage.innerText = "I love you too my sweetheart!!";
+            loveMessage.style.fontSize = '3em';
+            loveMessage.style.fontWeight = 'bold';
+            loveMessage.style.color = 'white';
+            loveMessage.style.textAlign = 'center';
+            document.body.appendChild(loveMessage);
+        }
+
+        function noAction() {
+            noButtonClicks++;
+            if (noButtonClicks >= 6) {
+                document.body.style.backgroundColor = 'black';
+                document.querySelector('.container').style.display = 'none';
+                const errorMessage = document.createElement('div');
+                errorMessage.innerText = "ERROR: 3:< its okay, i still love you...";
+                errorMessage.style.fontSize = '3em';
+                errorMessage.style.fontWeight = 'bold';
+                errorMessage.style.color = 'white';
+                errorMessage.style.textAlign = 'center';
+                document.body.appendChild(errorMessage);
+            } else {
+                const noButton = document.getElementById('no-button');
+                const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+                const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+                noButton.style.position = 'fixed';
+                noButton.style.left = randomX + 'px';
+                noButton.style.top = randomY + 'px';
+            }
+        }
+    </script>
+</body>
+</html>
